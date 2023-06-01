@@ -10,7 +10,7 @@ import plotly.express as px
 import time
 import plotly.io as pio
 import io
-#import dash_renderer
+import pathlib 
 
 
 #### import data
@@ -23,7 +23,13 @@ for number in range(periods):
     
     
 #### import data
-df_data = pd.read_csv('dataset.csv').set_index('Wavelength')
+PATH = pathlib.Path(__file__).parent.parent
+print(PATH)
+DATA_PATH = PATH.joinpath("data/dataset.csv").resolve()
+print(DATA_PATH)
+
+df_data = pd.read_csv(DATA_PATH).set_index('Wavelength')
+#df_data = pd.read_csv(DATA_PATH + 'dataset.csv').set_index('Wavelength')
 df_data.columns.values[:]=[i+1 for i in range(len(network_daylist))]
 ##############
 
