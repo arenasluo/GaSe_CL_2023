@@ -28,7 +28,9 @@ print(PATH)
 DATA_PATH = PATH.joinpath("data/dataset.csv").resolve()
 print(DATA_PATH)
 
-df_data = pd.read_csv(DATA_PATH).set_index('Wavelength')
+df_data = pd.read_csv(DATA_PATH,header=None).set_index(0)
+
+df_data = df_data.rename_axis('wavelength')
 #df_data = pd.read_csv(DATA_PATH + 'dataset.csv').set_index('Wavelength')
 df_data.columns.values[:]=[i+1 for i in range(len(network_daylist))]
 ##############
@@ -58,11 +60,11 @@ app.layout = html.Div(
         html.P("Wavelength (nm):"),
         dcc.RangeSlider(
             id="range-slider",
-            min=kkk[23],
-            max=kkk[449],
+            min=kkk[0],
+            max=kkk[365],
             step=0.1,
-            marks={i: str(i) for i in range(int(kkk[23]), int(kkk[449]), 10)},
-            value=[kkk[35], kkk[106]],
+            marks={i: str(i) for i in range(int(kkk[0]), int(kkk[365]), 10)},
+            value=[kkk[0], kkk[36]],
         ),
         # html.A(
         #     html.Button("Download as HTML"),
@@ -110,7 +112,8 @@ def update_chart(slider_range):
         margin=dict(
             l=80,
             r=80,
-        ),
+        ),    yaxis=dict(autorange='reversed'),
+
     )
     #pyo.plot(fig)
     #pio.write_html(fig, 'figure.html', auto_open = True)
