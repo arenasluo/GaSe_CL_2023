@@ -107,16 +107,13 @@ def update_chart(slider_range):
         autosize=False,
         width=750,
         height=750,
-        #range_color = [10000,100000],
-        ### caxis
-        #coloraxis=dict(colorscale="turbo", cmin=10000, cmax=100000),
         margin=dict(
             l=80,
             r=80,
         ),
     )
-    pyo.plot(fig)
-    pio.write_html(fig, 'figure.html', auto_open = True)
+    #pyo.plot(fig)
+    #pio.write_html(fig, 'figure.html', auto_open = True)
     #pio.write_html(fig, file=’index.html’, auto_open = True)
 
     return fig
