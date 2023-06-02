@@ -4,3 +4,4 @@ Supporting information for "Imaging Strain-Localized Single-Photon Emitters in L
 View CL mapping results with the link as:  
 https://biscuit-nobody-spacing-y8dh.onrender.com/
 
+* The corresponding original dataset "dataset.csv" is under the folder "data".
